@@ -1,0 +1,28 @@
+{
+	"name": "blog",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"scripts": {
+		"start": "node backend/server.js",
+		"server": "nodemon backend/server.js",
+		"client": "npm start --prefix frontend"
+	},
+	"author": "Phumlani Arendse",
+	"license": "MIT",
+	"devDependencies": {
+		"nodemon": "^2.0.19"
+	},
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"colors": "^1.4.0",
+		"dotenv": "^16.0.1",
+		"express": "^4.18.1",
+		"express-async-handler": "^1.2.0",
+		"express-session": "^1.17.3",
+		"jsonwebtoken": "^8.5.1",
+		"mongoose": "^6.4.4",
+		"passport": "^0.6.0",
+		"passport-google-oauth2": "^0.2.0"
+	}
+}
