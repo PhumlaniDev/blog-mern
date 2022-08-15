@@ -1,10 +1,19 @@
 import { FaSignInAlt } from "react-icons/fa";
+import Spinner from "../components/Spinner";
 import { useLogin } from "../hook/useLogin";
+import { useSelector } from "react-redux";
 
 function Login() {
 	const { email, password, onChange, onSubmit } = useLogin();
+
+	const { isLoading } = useSelector((state) => state.auth);
+
+	if (isLoading) {
+		<Spinner />;
+	}
+
 	return (
-		<>
+		<div className="container">
 			<section className="heading">
 				<h1>
 					<FaSignInAlt />
@@ -44,7 +53,7 @@ function Login() {
 					</div>
 				</form>
 			</section>
-		</>
+		</div>
 	);
 }
 

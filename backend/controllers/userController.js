@@ -45,13 +45,10 @@ const login = asyncHandler(async (req, res) => {
 
 	const user = await User.findOne({ email });
 	if (!user) {
-		res.status(400).json("Invalid email or password");
+		res.status(404).json("User not found");
 	}
 
 	const comparePass = await bcrypt.compare(password, user.password);
-	if (!comparePass) {
-		res.status(400).json("Invalid email or password");
-	}
 
 	if (user && comparePass) {
 		res.status(200).json({
@@ -61,17 +58,14 @@ const login = asyncHandler(async (req, res) => {
 			token: generateToken(user._id),
 			message: "You have been successfully authenticated",
 		});
+	} else {
+		res.status(400);
+		throw new Error("Invalid email or password");
 	}
 });
 
 const getUser = asyncHandler(async (req, res) => {
-	const { _id, name, email } = await User.findById(req.user.id);
-
-	res.status(200).json({
-		id: _id,
-		name,
-		email,
-	});
+	res.status(200).json(req.user);
 });
 
 const generateToken = (id) => {

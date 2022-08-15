@@ -16,7 +16,7 @@ const postSchema = mongoose.Schema(
 			required: [true, "Please write a blog"],
 		},
 	},
-	{ timestamp: true }
+	{ timestamps: true }
 );
 
 module.exports = mongoose.model("Post", postSchema);

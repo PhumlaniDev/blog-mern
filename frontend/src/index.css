@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kite+One&display=swap");
 
 * {
 	margin: 0;
@@ -13,7 +14,7 @@ body {
 
 a {
 	text-decoration: none;
-	color: #000;
+	color: #fff;
 }
 
 p {
@@ -35,44 +36,29 @@ h3 {
 	margin-bottom: 10px;
 }
 
+.logo {
+	font-family: "Kite One", sans-serif;
+	font-size: 30px;
+}
+
+.home {
+	height: 100%;
+	background-color: #fff;
+	display: flex;
+}
+
+article {
+	padding: 50px;
+	width: 80vw;
+}
+
 .container {
 	width: 100%;
 	max-width: 960px;
 	margin: 0 auto;
 	padding: 0 20px;
 	text-align: center;
-}
-
-.header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 20px 0;
-	border-bottom: 1px solid #e6e6e6;
-	margin-bottom: 60px;
-}
-
-.header ul {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-
-.header ul li {
-	margin-left: 20px;
-}
-
-.header ul li a {
-	display: flex;
-	align-items: center;
-}
-
-.header ul li a:hover {
-	color: #777;
-}
-
-.header ul li a svg {
-	margin-right: 5px;
+	height: calc(100vh - 60px);
 }
 
 .heading {
@@ -86,7 +72,7 @@ h3 {
 	color: #828282;
 }
 
-.blogs {
+/* .blogs {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 10px;
@@ -106,7 +92,7 @@ h3 {
 	cursor: pointer;
 	border: none;
 	background: none;
-}
+} */
 
 .form,
 .content {
@@ -139,8 +125,8 @@ h3 {
 	padding: 10px 20px;
 	border: 1px solid #000;
 	border-radius: 5px;
-	background: #000;
-	color: #fff;
+	background: rgb(201, 201, 201);
+	color: #000;
 	font-size: 16px;
 	font-weight: 700;
 	cursor: pointer;
@@ -189,6 +175,37 @@ h3 {
 	border-color: #000 transparent #555 transparent;
 	border-radius: 50%;
 	animation: spin 1.2s linear infinite;
+}
+
+/* .wrapper {
+	display: flex;
+} */
+
+.dash {
+	display: flex;
+	flex-direction: row;
+}
+
+.post {
+	margin-bottom: 50px;
+}
+
+.footer {
+	background-color: #7ea16b;
+	padding: 10px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-content: center;
+	justify-content: space-around;
+}
+
+.dashboard {
+	height: calc(100vh - 60px);
+	width: 100vw;
+	margin-top: 100px;
+	padding: 0 50px;
+	display: flex;
 }
 
 @keyframes spin {
