@@ -94,6 +94,15 @@ article {
 	background: none;
 } */
 
+.wrapper {
+	height: 80vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+}
+
 .form,
 .content {
 	width: 70%;
@@ -177,10 +186,6 @@ article {
 	animation: spin 1.2s linear infinite;
 }
 
-/* .wrapper {
-	display: flex;
-} */
-
 .dash {
 	display: flex;
 	flex-direction: row;
@@ -196,8 +201,10 @@ article {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
+	height: 10vh;
 	align-content: center;
-	justify-content: space-around;
+	justify-content: center;
+	align-items: center;
 }
 
 .dashboard {

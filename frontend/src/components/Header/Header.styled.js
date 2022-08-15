@@ -6,7 +6,7 @@ export const Wrapper = styled.header`
 	align-items: center;
 	padding: 20px 50px;
 	background-color: #1c3144;
-	height: 60px;
+	height: 10vh;
 	position: sticky;
 	z-index: 9999;
 	top: 0;

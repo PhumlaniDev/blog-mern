@@ -13,15 +13,15 @@ function Login() {
 	}
 
 	return (
-		<div className="container">
-			<section className="heading">
+		<div className="wrapper">
+			<section>
 				<h1>
 					<FaSignInAlt />
 					Login
 				</h1>
 			</section>
 
-			<section className="form">
+			<section>
 				<form onSubmit={onSubmit}>
 					<div className="form-group">
 						<input

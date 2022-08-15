@@ -14,8 +14,8 @@ function Register() {
 	}
 
 	return (
-		<div className="container">
-			<section className="heading">
+		<div className="wrapper">
+			<section>
 				<h1>
 					<FaUser />
 					Register
@@ -23,7 +23,7 @@ function Register() {
 				<p>Register create an account</p>
 			</section>
 
-			<section className="form">
+			<section>
 				<form onSubmit={onSubmit}>
 					<div className="form-group">
 						<input
