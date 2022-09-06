@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 const Helper = (props) => {
 	const editorRef = useRef(null);
-	const language = props;
+	const { language } = props;
 	const markers = [
 		{
 			key: "header",
@@ -172,7 +172,6 @@ const Helper = (props) => {
 			],
 		},
 	];
-
 	return { editorRef, language, markers };
 };
 

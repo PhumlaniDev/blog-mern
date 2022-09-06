@@ -1,149 +1,15 @@
 import "react-textarea-markdown-editor/build/TextareaMarkdownEditor.css";
 
-import { Icon } from "semantic-ui-react";
+import Helper from "../helpers/helper";
 import Spinner from "../components/Spinner";
 import TextareaMarkdownEditor from "react-textarea-markdown-editor";
 import md from "markdown-it";
 import { useAddBlog } from "../hook/useAddBlog";
-import { useRef } from "react";
 import { useSelector } from "react-redux";
 
 const BlogForm = (props) => {
-	const editorRef = useRef(null);
-	const markers = [
-		{
-			key: "header",
-			markers: [
-				{
-					key: "header",
-					markers: [
-						{
-							key: "h1",
-							marker: "# ",
-							name: <b>H1</b>,
-							type: "line-marker",
-						},
-						{
-							key: "h2",
-							marker: "## ",
-							name: <b>H2</b>,
-							type: "line-marker",
-						},
-						{
-							key: "h3",
-							marker: "### ",
-							name: <b>H3</b>,
-							type: "line-marker",
-						},
-						{
-							key: "h4",
-							marker: "#### ",
-							name: <b>H4</b>,
-							type: "line-marker",
-						},
-					],
-					type: "dropdown",
-				},
-			],
-		},
-		{
-			key: "text",
-			markers: [
-				{
-					key: "text",
-					markers: [
-						{
-							defaultText: "bold",
-							key: "bold",
-							prefix: "**",
-							suffix: "**",
-							type: "marker",
-						},
-						{
-							defaultText: "italic",
-							key: "italic",
-							prefix: "*",
-							suffix: "*",
-							type: "marker",
-						},
-						{
-							defaultText: "strikethrough",
-							key: "strikethrough",
-							prefix: "~~",
-							suffix: "~~",
-							type: "marker",
-						},
-						{
-							key: "blockquote",
-							marker: "> ",
-							type: "line-marker",
-						},
-						{
-							defaultText: "inline code",
-							key: "inline-code",
-							prefix: "`",
-							suffix: "`",
-							type: "marker",
-						},
-						{
-							defaultText: "code",
-							key: "code",
-							multipleLine: true,
-							prefix: "```",
-							suffix: "```",
-							type: "marker",
-						},
-						{
-							key: "hr",
-							multipleLine: true,
-							name: <hr style={{ width: "100%" }} />,
-							template: "---",
-							type: "template",
-						},
-					],
-					type: "dropdown",
-				},
-			],
-		},
-		{
-			key: "list",
-			markers: [
-				{
-					key: "unordered-list",
-					marker: "* ",
-					name: <Icon name="list ul" fitted size="large" />,
-					type: "line-marker",
-				},
-				{
-					key: "ordered-list",
-					marker: "1. ",
-					name: <Icon name="list ol" fitted size="large" />,
-					type: "line-marker",
-				},
-			],
-		},
-		{
-			key: "additional",
-			markers: [
-				{
-					defaultText: "text",
-					key: "link",
-					name: <Icon name="linkify" fitted size="large" />,
-					prefix: "[",
-					suffix: "](url)",
-					type: "marker",
-				},
-				{
-					defaultText: "YMmdQw17TU4",
-					key: "youtube",
-					name: <Icon name="youtube play" fitted size="large" />,
-					prefix: "@[youtube](",
-					suffix: ")",
-					type: "marker",
-				},
-			],
-		},
-	];
+	const { editorRef, language, markers } = Helper;
+
 	const { formData, onChange, onSubmit, onPostChange } = useAddBlog();
 
 	const { isLoading } = useSelector((state) => state.blogs);
@@ -188,6 +54,7 @@ const BlogForm = (props) => {
 						className="post"
 						markers={markers}
 						ref={editorRef}
+						language={language}
 						doParse={md.render}
 						name="post"
 						cols="30"

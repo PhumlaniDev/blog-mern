@@ -19,14 +19,11 @@ export const useAddBlog = () => {
 			...formData.title,
 			[e.target.name]: e.target.value,
 		});
-		console.log(e);
 	};
 
-	const onPostChange = (prevState, e) => {
-		const { id } = e.targe;
+	const onPostChange = (post) => {
 		setPostData({
-			...prevState.id,
-			[e.target]: id,
+			post,
 		});
 	};
 

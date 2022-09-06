@@ -35,9 +35,9 @@ const Dashboard = () => {
 				{blogs.length > 0 ? (
 					<div>
 						{blogs.map((blog) => (
-							<li key={blog._id}>
+							<div key={blog._id}>
 								<Blog blog={blog} />
-							</li>
+							</div>
 						))}
 					</div>
 				) : (
