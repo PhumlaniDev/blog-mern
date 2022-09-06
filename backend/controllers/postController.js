@@ -70,7 +70,7 @@ const deletePost = asyncHandler(async (req, res) => {
 
 	await blog.remove();
 
-	res.json(`Deleted blog ${id}`);
+	res.status(200).json(`Deleted blog ${id}`);
 });
 
 module.exports = { getPosts, setPost, updatePost, deletePost };

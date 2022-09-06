@@ -84,15 +84,22 @@ article {
 	padding: 20px 0 10px;
 	position: relative;
 }
+*/
 
-.blog .close {
-	position: absolute;
-	top: 10px;
-	right: 15px;
+.edit {
 	cursor: pointer;
 	border: none;
 	background: none;
-} */
+	color: green;
+	margin-right: 10px;
+}
+
+.delete {
+	cursor: pointer;
+	border: none;
+	background: none;
+	color: red;
+}
 
 .wrapper {
 	height: 80vh;

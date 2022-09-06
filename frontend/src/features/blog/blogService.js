@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "/api/blog";
+const API_URL = "/api/blogs/";
 
 const setBlog = async (postData, token) => {
 	const config = {
@@ -9,7 +9,7 @@ const setBlog = async (postData, token) => {
 		},
 	};
 
-	const response = await axios.post(API_URL + "/write", postData, config);
+	const response = await axios.post(API_URL + "write", postData, config);
 
 	return response.data;
 };
@@ -26,7 +26,7 @@ const deleteBlog = async (blogId, token) => {
 			Authorization: `Bearer ${token}`,
 		},
 	};
-	const response = await axios.delete(API_URL + "/blogId", config);
+	const response = await axios.delete(API_URL + blogId, config);
 
 	return response.data;
 };

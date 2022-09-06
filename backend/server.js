@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use("/api/blog", blogRouter);
+app.use("/api/blogs", blogRouter);
 app.use("/api/user", userRouter);
 
 app.use(errorHandler);

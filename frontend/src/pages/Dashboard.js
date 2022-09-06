@@ -35,7 +35,9 @@ const Dashboard = () => {
 				{blogs.length > 0 ? (
 					<div>
 						{blogs.map((blog) => (
-							<Blog key={blog._id} blog={blog} />
+							<li key={blog._id}>
+								<Blog blog={blog} />
+							</li>
 						))}
 					</div>
 				) : (
@@ -44,20 +46,6 @@ const Dashboard = () => {
 			</article>
 			<Profile />
 		</main>
-		// <div className="dashboard">
-		// 	<div className="dash">
-		// {blogs.length > 0 ? (
-		// 	<div>
-		// 		{blogs.map((blog) => (
-		// 			<Blog key={blog._id} blog={blog} />
-		// 		))}
-		// 	</div>
-		// ) : (
-		// 	<h3>You have no posts</h3>
-		// )}
-		// 	</div>
-
-		// </div>
 	);
 };
 
