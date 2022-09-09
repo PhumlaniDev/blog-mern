@@ -4,8 +4,10 @@ import React from "react";
 
 const RichTextEditor = ({ post, onPostChange }) => {
 	return (
-		<div>
-			<h2>Using CKEditor 5 from online builder in React</h2>
+		<div className="form-group">
+			<label htmlFor="text">
+				Post <span className="required"> * </span>
+			</label>
 			<CKEditor
 				editor={Editor}
 				data={post}
