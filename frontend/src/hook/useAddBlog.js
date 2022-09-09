@@ -20,11 +20,13 @@ export const useAddBlog = () => {
 			[e.target.name]: e.target.value,
 		});
 	};
+	console.log(...formData.title);
 
 	const onPostChange = (post) => {
 		setPostData({
 			post,
 		});
+		console.log(post);
 	};
 
 	const onSubmit = (e) => {

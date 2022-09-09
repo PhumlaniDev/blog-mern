@@ -1,16 +1,12 @@
-import "react-textarea-markdown-editor/build/TextareaMarkdownEditor.css";
-
-import Helper from "../helpers/helper";
+import RichTextEditor from "../components/RichTextEditor";
 import Spinner from "../components/Spinner";
-import TextareaMarkdownEditor from "react-textarea-markdown-editor";
-import md from "markdown-it";
 import { useAddBlog } from "../hook/useAddBlog";
 import { useSelector } from "react-redux";
 
-const BlogForm = (props) => {
-	const { editorRef, language, markers } = Helper;
-
+const BlogForm = () => {
 	const { formData, onChange, onSubmit, onPostChange } = useAddBlog();
+
+	const { title, post } = formData;
 
 	const { isLoading } = useSelector((state) => state.blogs);
 
@@ -33,7 +29,7 @@ const BlogForm = (props) => {
 							className="form-control"
 							onChange={onChange}
 							placeholder="Title"
-							value={formData.title}
+							value={title}
 							required
 						/>
 					</div>
@@ -50,17 +46,7 @@ const BlogForm = (props) => {
 							onChange={onChange}
 						></textarea>
 					</div> */}
-					<TextareaMarkdownEditor
-						className="post"
-						markers={markers}
-						ref={editorRef}
-						language={language}
-						doParse={md.render}
-						name="post"
-						cols="30"
-						rows="10"
-						onChange={onPostChange}
-					/>
+					<RichTextEditor data={post} onChange={onPostChange} />
 					<div className="form-group col-sm-12 text-right">
 						<button type="submit" className="btn btn__theme">
 							Submit

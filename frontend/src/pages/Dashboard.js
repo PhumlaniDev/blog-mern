@@ -34,10 +34,8 @@ const Dashboard = () => {
 			<article>
 				{blogs.length > 0 ? (
 					<div>
-						{blogs.map((blog) => (
-							<div key={blog._id}>
-								<Blog blog={blog} />
-							</div>
+						{blogs.map((blog, index) => (
+							<Blog key={index} blog={blog} />
 						))}
 					</div>
 				) : (
