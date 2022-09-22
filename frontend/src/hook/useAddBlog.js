@@ -17,19 +17,19 @@ export const useAddBlog = () => {
 		});
 	};
 
-	const onPostChange = (editor) => {
+	const onPostChange = (event, editor) => {
 		const data = editor.getData();
-		setPost(data);
+		setPost({
+			post: data,
+		});
 	};
-
-	console.log(postData.post);
 
 	const onSubmit = (e) => {
 		e.preventDefault();
 
 		const blogData = {
-			title: titleData.title,
-			post: postData.post,
+			titleData,
+			postData,
 		};
 
 		dispatch(setBlog(blogData));
