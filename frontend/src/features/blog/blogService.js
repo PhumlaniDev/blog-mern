@@ -2,14 +2,14 @@ import axios from "axios";
 
 const API_URL = "/api/blogs/";
 
-const setBlog = async (postData, token) => {
+const setBlog = async (blogData, token) => {
 	const config = {
 		headers: {
 			Authorization: `Bearer ${token}`,
 		},
 	};
 
-	const response = await axios.post(API_URL + "write", postData, config);
+	const response = await axios.post(API_URL + "write", blogData, config);
 
 	return response.data;
 };

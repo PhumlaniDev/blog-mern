@@ -4,10 +4,8 @@ import { useAddBlog } from "../hook/useAddBlog";
 import { useSelector } from "react-redux";
 
 const BlogForm = () => {
-	const { formData, onChange, onSubmit, onPostChange } = useAddBlog();
-
-	const { title, post } = formData;
-
+	const { titleData, postData, onTitleChange, onPostChange, onSubmit } =
+		useAddBlog();
 	const { isLoading } = useSelector((state) => state.blogs);
 
 	if (isLoading) {
@@ -27,9 +25,9 @@ const BlogForm = () => {
 							type="text"
 							name="title"
 							className="form-control"
-							onChange={onChange}
+							onChange={onTitleChange}
 							placeholder="Title"
-							value={title}
+							value={titleData.title}
 							required
 						/>
 					</div>
@@ -46,7 +44,11 @@ const BlogForm = () => {
 							onChange={onChange}
 						></textarea>
 					</div> */}
-					<RichTextEditor data={post} onChange={onPostChange} />
+					<RichTextEditor
+						data={postData.post}
+						value={postData.post}
+						onChange={onPostChange}
+					/>
 					<div className="form-group col-sm-12 text-right">
 						<button type="submit" className="btn btn__theme">
 							Submit

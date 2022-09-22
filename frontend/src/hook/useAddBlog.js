@@ -4,46 +4,40 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export const useAddBlog = () => {
-	const [formData, setFormData] = useState({
-		title: "",
-	});
-	const [postData, setPostData] = useState({
-		post: "",
-	});
+	const [titleData, setTitle] = useState({ title: "" });
+	const [postData, setPost] = useState({ post: "" });
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const onChange = (e) => {
-		setFormData({
-			...formData.title,
+	const onTitleChange = (e) => {
+		setTitle({
+			...titleData.title,
 			[e.target.name]: e.target.value,
 		});
 	};
-	console.log(...formData.title);
 
-	const onPostChange = (post) => {
-		setPostData({
-			post,
-		});
-		console.log(post);
+	const onPostChange = (editor) => {
+		const data = editor.getData();
+		setPost(data);
 	};
+
+	console.log(postData.post);
 
 	const onSubmit = (e) => {
 		e.preventDefault();
 
 		const blogData = {
-			title: formData.title,
+			title: titleData.title,
 			post: postData.post,
 		};
 
 		dispatch(setBlog(blogData));
-		setFormData({});
-		setPostData({
-			post: postData.post,
-		});
+		setTitle({ title: "" });
+		setPost({ post: "" });
+
 		navigate("/");
 	};
 
-	return { formData, postData, onChange, onPostChange, onSubmit };
+	return { titleData, postData, onTitleChange, onPostChange, onSubmit };
 };
