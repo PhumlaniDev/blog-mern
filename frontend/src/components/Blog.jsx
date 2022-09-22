@@ -2,6 +2,7 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 
 import React from "react";
 import { deleteBlog } from "../features/blog/blogSlice";
+import parse from "html-react-parser";
 import { useDispatch } from "react-redux";
 
 const Blog = ({ blog }) => {
@@ -32,7 +33,7 @@ const Blog = ({ blog }) => {
 						</button>
 					</div>
 				</div>
-				<p>{blog.post}</p>
+				<p>{parse(blog.post)}</p>
 			</div>
 		</>
 	);
