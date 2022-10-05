@@ -12,15 +12,17 @@ const Header = () => {
 
 	return (
 		<Wrapper>
-			<div className="logo">
-				<Link to="/">My Journey</Link>
-			</div>
+			<Link className="logo" to="/">
+				My Journey
+			</Link>
 			<ul>
 				{user ? (
 					<>
 						<li>
 							<Link to="/write">
-								<FaPlus />
+								<div className="write">
+									<h6>write</h6>
+								</div>
 							</Link>
 						</li>
 						<li>

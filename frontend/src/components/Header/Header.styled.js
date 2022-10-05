@@ -1,15 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.header`
+	height: 60px;
+	border-bottom: 1px solid #225560;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 20px 50px;
-	background-color: #1c3144;
-	height: 10vh;
-	position: sticky;
-	z-index: 9999;
-	top: 0;
 
 	ul {
 		display: flex;
@@ -19,11 +15,14 @@ export const Wrapper = styled.header`
 
 	ul li {
 		margin-left: 20px;
+		list-style: none;
 	}
 
 	ul li a {
 		display: flex;
 		align-items: center;
+		text-decoration: none;
+		color: #000;
 	}
 
 	ul li a:hover {

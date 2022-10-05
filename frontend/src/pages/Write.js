@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
-const BlogForm = () => {
+const Write = () => {
 	const [titleData, setTitle] = useState({ title: "" });
 	const [postData, setPost] = useState({ post: "" });
 
@@ -107,4 +107,4 @@ const BlogForm = () => {
 	);
 };
 
-export default BlogForm;
+export default Write;

@@ -1,12 +1,12 @@
 import { getBlog, reset } from "../features/blog/blogSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-import Blog from "../components/Blog";
-import Profile from "../components/Profile/Profile";
+import Post from "../components/Post";
+import Posts from "../components/Posts";
 import Spinner from "../components/Spinner";
 import { useEffect } from "react";
 
-const Dashboard = () => {
+const Home = () => {
 	const dispatch = useDispatch();
 
 	const { blogs, isError, isLoading, message } = useSelector(
@@ -31,20 +31,18 @@ const Dashboard = () => {
 
 	return (
 		<main className="home">
-			<article>
-				{blogs.length > 0 ? (
-					<div>
-						{blogs.map((blog, index) => (
-							<Blog key={index} blog={blog} />
-						))}
-					</div>
-				) : (
-					<h3>You have no posts</h3>
-				)}
-			</article>
-			<Profile />
+			{blogs.length > 0 ? (
+				<Posts>
+					{blogs.map((item) => (
+						<Post key={item._id} title={item.title} />
+					))}
+				</Posts>
+			) : (
+				<h3>You have no posts</h3>
+			)}
+			{/* <Profile /> */}
 		</main>
 	);
 };
 
-export default Dashboard;
+export default Home;
