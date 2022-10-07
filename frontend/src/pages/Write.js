@@ -1,52 +1,20 @@
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import Editor from "ckeditor5-custom-build/build/ckeditor";
 import Spinner from "../components/Spinner";
-import { setBlog } from "../features/blog/blogSlice";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useAddBlog } from "../hook/useAddBlog";
 import { useSelector } from "react-redux";
-import { useState } from "react";
 
 const Write = () => {
-	const [titleData, setTitle] = useState({ title: "" });
-	const [postData, setPost] = useState({ post: "" });
+	const {
+		title,
+		description,
+		post,
+		onChange,
+		onPostChange,
+		onImageChange,
+		onSubmit,
+	} = useAddBlog();
 
-	const { title } = titleData;
-	const { post } = postData;
-
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-
-	const onTitleChange = (e) => {
-		setTitle({
-			...title,
-			[e.target.name]: e.target.value,
-		});
-	};
-
-	const onPostChange = (event, editor) => {
-		const data = editor.getData();
-		setPost({
-			post: data,
-		});
-	};
-
-	console.log(postData.post);
-
-	const onSubmit = (e) => {
-		e.preventDefault();
-
-		const blogData = {
-			title,
-			post,
-		};
-
-		dispatch(setBlog(blogData));
-		setTitle({ title: "" });
-		setPost({ post: "" });
-
-		navigate("/");
-	};
 	const { isLoading } = useSelector((state) => state.blogs);
 
 	if (isLoading) {
@@ -66,35 +34,47 @@ const Write = () => {
 							type="text"
 							name="title"
 							className="form-control"
-							onChange={onTitleChange}
+							onChange={onChange}
 							placeholder="Title"
 							value={title}
 							required
 						/>
 					</div>
-					{/* Text area */}
-					{/* <div className="form-group">
+
+					<div className="form-group">
 						<label htmlFor="text">
-							Post <span className="required"> * </span>
+							Description <span className="required"> * </span>
 						</label>
-						<textarea
-							name="post"
-							cols="30"
-							rows="10"
-							value={post}
+						<input
+							type="text"
+							name="description"
+							className="form-control"
 							onChange={onChange}
-						></textarea>
-					</div> */}
+							placeholder="Title"
+							value={description}
+							required
+						/>
+					</div>
+
+					<div className="form-group">
+						<label htmlFor="text">
+							Image <span className="required"> * </span>
+						</label>
+						<input type="file" accept="image/*" onChange={onImageChange} />
+					</div>
+
 					<div className="form-group">
 						<label htmlFor="text">
 							Post <span className="required"> * </span>
 						</label>
-						<CKEditor
-							editor={Editor}
-							value={post}
-							data={post}
-							onChange={onPostChange}
-						/>
+						<div className="editorContainer">
+							<CKEditor
+								editor={Editor}
+								value={post}
+								data={post}
+								onChange={onPostChange}
+							/>
+						</div>
 					</div>
 					<div className="form-group col-sm-12 text-right">
 						<button type="submit" className="btn btn__theme">

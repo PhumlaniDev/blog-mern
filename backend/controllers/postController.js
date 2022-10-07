@@ -7,17 +7,19 @@ const getPosts = asyncHandler(async (req, res) => {
 });
 
 const setPost = asyncHandler(async (req, res) => {
-	const { title, post } = req.body;
+	const { title, description, post, image } = req.body;
 
-	if (!title && !post) {
+	if (!title && !description && !post) {
 		res.status(400);
 		throw new Error("Please write some text");
 	}
 
 	const blog = await Post.create({
 		user: req.user.id,
-		title: title,
-		post: post,
+		title,
+		description,
+		post,
+		image,
 	});
 
 	res.status(200).json(blog);

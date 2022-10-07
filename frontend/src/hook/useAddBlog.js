@@ -4,17 +4,33 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export const useAddBlog = () => {
-	const [titleData, setTitle] = useState({ title: "" });
-	const [postData, setPost] = useState({ post: "" });
+	const [formData, setFormData] = useState({
+		title: "",
+		description: "",
+	});
+
+	const [image, setImage] = useState(null);
+
+	const [postData, setPost] = useState({
+		post: "",
+	});
+
+	const { title, description } = formData;
+
+	const { post } = postData;
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const onTitleChange = (e) => {
-		setTitle({
-			...titleData.title,
+	const onChange = (e) => {
+		setFormData({
+			...formData,
 			[e.target.name]: e.target.value,
 		});
+	};
+
+	const onImageChange = (e) => {
+		setImage(e.target.files[0]);
 	};
 
 	const onPostChange = (event, editor) => {
@@ -24,20 +40,44 @@ export const useAddBlog = () => {
 		});
 	};
 
+	console.log(post);
+
 	const onSubmit = (e) => {
 		e.preventDefault();
 
 		const blogData = {
-			titleData,
-			postData,
+			title,
+			description,
+			post,
 		};
 
+		if (image) {
+			const data = new FormData();
+			const filename = Date.now() + image.name;
+			data.append("name", filename);
+			data.append("image", image);
+			blogData.photo = filename;
+		}
+
 		dispatch(setBlog(blogData));
-		setTitle({ title: "" });
+		setFormData({
+			title: "",
+			description: "",
+		});
+
+		setImage("");
 		setPost({ post: "" });
 
 		navigate("/");
 	};
 
-	return { titleData, postData, onTitleChange, onPostChange, onSubmit };
+	return {
+		title,
+		description,
+		post,
+		onChange,
+		onImageChange,
+		onPostChange,
+		onSubmit,
+	};
 };

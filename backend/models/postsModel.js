@@ -10,10 +10,19 @@ const postSchema = mongoose.Schema(
 		title: {
 			type: String,
 			required: [true, "Please enter a title"],
+			unique: true,
+		},
+		description: {
+			type: String,
+			required: [true, "Please enter a description"],
 		},
 		post: {
 			type: String,
 			required: [true, "Please write a blog"],
+		},
+		image: {
+			type: String,
+			default: "",
 		},
 	},
 	{ timestamps: true }
